@@ -55,6 +55,12 @@ console.log(name);
     "strictFunctionTypes": true,
     "allowJs": true,
     "checkJs": true,
+    "jsx": "preserve",
+    "declaration": true,
+    "outFile": "app.js",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "removeComments": true,
     "baseUrl": "./src",
   }
 }
@@ -62,11 +68,17 @@ console.log(name);
 
 - `target` 를 사용하여 tsc 커맨드로 최종 컴파일하는 결과의 문법 형태를 결정할 수 있다. 만약 위와 같이 `"target": "es5"`를 선택했다면 코드상에서 작성한 `() => {}`와 같은 화살표 함수는 모두 function 표현볍으로 변환된다. `target`에 따라서 사용할 수 있는 기능이 제한적이다.
 - `module` 은 자바 스크립트 파일간 import 문법을 구현할때 어떤 문법을 사용할지 정하는 것이다. commonjs는 require 문법, es2015 및 esnext는 import 문법을 사용한다.
-- `sourceMap` 을 true로 지정하면 결과물에 .js.map 이나 .jsx.map 파일이 포함된다.
+- `sourceMap` 을 true로 지정하면 결과물에 `.js.map` 이나 `.jsx.map` 파일이 포함된다.
 - `strict` 를 true로 지정하면 타입 스크립트의 type 검사 옵션 중 `strict*` 와 관련된 모든 것을 true로 만든다. 즉 `strict*` 와 관련된 모든 속성(`strictNullChecks`, `strictFunctionTypes`)이 true 이므로 필요에 따라서 속성을 선택하여 false로 지정해야 한다.
 - `noImplicitAny` 는 any 타입이 의도치않게 발생한 경우 에러를 띄워주는 설정이다.
-- `allowJs` 를 true로 설정하면 .js 및 .jsx 파일도 컴파일 대상이 된다.
-- `checkJs` 는 .js 파일도 타입 검사의 대상으로 삼을지 여부를 설정하는 옵션이다.
+- `allowJs` 를 true로 설정하면 `.js` 및 `.jsx` 파일도 컴파일 대상이 된다.
+- `checkJs` 는 `.js` 파일도 타입 검사의 대상으로 삼을지 여부를 설정하는 옵션이다.
+- `jsx` 는 어떻게 `.tsx` 파일을 `.jsx` 파일로 컴파일 할지 정하는 설정이다.(`preserve`, `react-native`, `react`)
+- `declaration` 는 컴파일시 `.d.ts` 파일도 자동으로 함께 생성해주는 속성이다. `.d.ts` 파일은 현재쓰는 모든 타입이 정의된 파일이고 이 선언 파일은 주로 라이브러리나 모듈을 정의하고 다른 타입 스크립트의 프로젝트에서 사용할 때 타입 정보를 제공하는데 사용된다.
+- `outFile` 을 사용하면 모든 `.ts` 파일을 하나의 `.js` 파일로 컴파일 해주는 설정이다.
+- `outDir` 은 타입 스크립트 컴파일러에 의해 컴파일된 자바 스크립트 파일을 저장할 디렉토리를 지정하는데 사용된다.
+- `rootDir` 은 루트 경로를 바꾸는 설정이다.
+- `removeComments` 는 컴파일시 주석을 제거 하는 설정이다.
 - `baseUrl` 은 외부 모듈이 아닌 모듈들을 절대 경로로 참조할 수 있게 해준다. 만약 `"baseUrl": "./src"`로 설정하게 되면 src를 기준으로 절대 경로로 모듈 참조가 가능해진다.
 
 ### tsconfig.json의 주요 프로퍼티 - files
